@@ -1,0 +1,23 @@
+{
+  "name": "eksamenv31",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx tailwindcss -i ./src/tailwind.css -o ./public/css/tailwind.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phreakkie/EksamenV31.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/phreakkie/EksamenV31/issues"
+  },
+  "homepage": "https://github.com/phreakkie/EksamenV31#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.0.23"
+  }
+}
