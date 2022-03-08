@@ -57,16 +57,8 @@ require "./includes/_header.php";
             </div>
         </div>
     </div>
-    <div class="login container">
-        <form action="login.php" method="post">
-            <label for="formUsername">Bruger:</label>
-            <input type="text" id="formUsername" name="formUsername" placeholder="Brugernavn" required>
-            <label for="formPassword">Password:</label>
-            <input type="password" id="formPassword" name="formPassword" placeholder="Password" required>
-            <input type="submit" name="submit" value="Log ind">
-        </form>
-        <a id="newUser" href="register.php">Ny bruger?</a>
-    </div>
+    <?php include "./includes/_login.php";
+    ?>
     <hr>
     <div class="container">
         <ul class="slider" id="slider">
@@ -133,49 +125,14 @@ require "./includes/_header.php";
                 </div>
             </div>
             <div class="frontProducts">
-                <article>
-                    <img src="img/produkt1.jpg" alt="Lækker læderjakke>">
-                    <div class="info">
-                        <h3>Lækker læderjakke</h3>
-                        <div class="stars">
-                            <i class='fa fa-star' aria-hidden='true'></i>
-                            <i class='fa fa-star' aria-hidden='true'></i>
-                            <i class='fa fa-star' aria-hidden='true'></i>
-                            <i class='fa fa-star-o' aria-hidden='true'></i>
-                            <i class='fa fa-star-o' aria-hidden='true'></i>
-                        </div>
-                    </div>
-                    <div class="description">
-                        <div class="published">
-                            Oprettet: Mandag d. 24/6-2019 af Mark
-                        </div>
-                        <p>Odd Molly er et svensk luksusbrand stiftet af Per Holknekt – tidligere pro skateboarder. Verdenseliten tiltrak dengang mange kvindelige fans, og de fleste af dem gjorde, hvad de kunne for at få fyrenes opmærksomhed. Alle undtagen én. Hun forblev tro mod sig selv - en unik, selvsikker og uforanderlig skønhed - hende, alle fyrene ville ha'. En Odd Molly! - som ikke er et koncept, men autentisk! – et brand, hvis kollektioner er vildt smukke og inderlige, som der altid vil være brug for - dengang, nu, såvel som i fremtiden.
-                            <a href="#">Læs mere...</a></p>
-                        <!-- Mulighed for sletning herunder -->
-                    </div>
-                </article>
-                <article>
-                    <img src="img/produkt1.jpg" alt="Lækker læderjakke>">
-                    <div class="info">
-                        <h3>Lækker læderjakke</h3>
-                        <div class="stars">
-                            <i class='fa fa-star' aria-hidden='true'></i>
-                            <i class='fa fa-star' aria-hidden='true'></i>
-                            <i class='fa fa-star' aria-hidden='true'></i>
-                            <i class='fa fa-star-o' aria-hidden='true'></i>
-                            <i class='fa fa-star-o' aria-hidden='true'></i>
-                        </div>
-                    </div>
-                    <div class="description">
-                        <div class="published">
-                            Oprettet: Mandag d. 24/6-2019 af Mark
-                        </div>
-                        <p>Odd Molly er et svensk luksusbrand stiftet af Per Holknekt – tidligere pro skateboarder. Verdenseliten tiltrak dengang mange kvindelige fans, og de fleste af dem gjorde, hvad de kunne for at få fyrenes opmærksomhed. Alle undtagen én. Hun forblev tro mod sig selv - en unik, selvsikker og uforanderlig skønhed - hende, alle fyrene ville ha'. En Odd Molly! - som ikke er et koncept, men autentisk! – et brand, hvis kollektioner er vildt smukke og inderlige, som der altid vil være brug for - dengang, nu, såvel som i fremtiden.
-                            <a href="#">Læs mere...</a></p>
-                        <!-- Mulighed for sletning herunder -->
-                    </div>
-                </article>
+            <!-- Indsætter produkterne på siden -->
+            <?php require "./includes/_insertProducts.php" ?>
             </div>
+           
+        
+        
+        
+            
         </div>
     </main>
     <hr>

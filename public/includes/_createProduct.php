@@ -1,5 +1,4 @@
 <?php
-require "./includes/_crud.php";
 ?>
 
 <div class="createArticle container">
@@ -61,5 +60,4 @@ require "./includes/_crud.php";
             $src = $_POST['imgSrc'];
             $alt = $_POST['imgAlt'];
             insertProduct($content, $heading, $category, $stars, $src, $alt);
-            // heading("location:index.php");
             }

@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once "./includes/_crud.php";
 ?>
 
 <!doctype html>
