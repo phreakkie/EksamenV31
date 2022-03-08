@@ -1,11 +1,14 @@
 <?php
-
+if(!isset($_GET['filter'])){
 $stmt = getProduct();
+}else{
+    $category = $_GET['filter'];
+    $stmt = getFilteredProduct($category);
+}
 while ($row = $stmt->fetch()) {
     $date = new DateTime($row['timestamp']);
     
 ?>
-
                 <article>
                     <img src="<?=$row['imgSrc']?>" alt="<?=$row['imgAlt']?>">
                     <div class="info">

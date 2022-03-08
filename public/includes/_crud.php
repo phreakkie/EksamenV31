@@ -10,14 +10,14 @@ function login($username, $password)
     $stmt->execute();
 
     if (empty($row = $stmt->fetch())) {
-        echo "<p class='text-red-500 mx-auto py-6 px-8 bg-red-200 border rounded-lg border-red-500 absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2'>Brugernavn eller Password er forkert</p>";
+        echo "<p class='text-red-500 mx-auto w-96 py-6 px-8 bg-red-200 border rounded-lg border-red-500 text-center'>Brugernavn eller Password er forkert</p>";
     } else if (password_verify($password, $row['dbPassword'])) {
         session_start();
         $_SESSION['username'] = $row['dbUsername'];
         $_SESSION['accesslevel'] = $row['accesslevel'];
         header("location: index.php");
     } else {
-        echo "<p class='text-red-500 mx-auto py-6 px-8 bg-red-200 border rounded-lg border-red-500 absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2'>Brugernavn eller Password er forkert</p>";
+        echo "<p class='text-red-500 mx-auto w-96 py-6 px-8 bg-red-200 border rounded-lg border-red-500 text-center'>Brugernavn eller Password er forkert</p>";
     }
 }
 
@@ -54,5 +54,14 @@ function getProduct()
     $sql = "SELECT * FROM products";
     $stmt = $connection->prepare($sql);
     $stmt->execute();
+    return $stmt;
+}
+
+function getFilteredProduct($category)
+{
+    global $connection;
+    $sql = "SELECT * FROM products WHERE category = ?";
+    $stmt = $connection->prepare($sql);
+    $stmt->execute([$category]);
     return $stmt;
 }
