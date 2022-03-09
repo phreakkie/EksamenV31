@@ -59,21 +59,23 @@ require_once "./includes/_crud.php";
     <hr>
     <div class="container navbar">
         <nav>
-            <ul>
-                <li class="active"><a href="index.php">Forside</a></li>
-                <li><a href="#">Produkter</a></li>
-                <li><a href="#">Nyheder</a></li>
-                <li><a href="#">Handelsbetingelser</a></li>
-                <li><a href="#">Om os</a></li>
-                <?php if(isset($_SESSION['username'])){
-                    echo "<li><a href='logout.php' class='logoutBtn'>Log ud</a></li>";
-                    
-                }else {
-                         echo "<li><a href='#' class='loginBtn'>Log ind</a></li>";
-                         echo "<li><a href='register.php' class='loginBtn'>Opret bruger</a></li>";
-
-                     }
-                      ?>
+            <ul>             
+                      <li class="<?=($site == 'index')? 'active': '' ;?>"><a href="index.php">Forside</a></li>
+                      <li class="<?=($site == 'products')? 'active': '' ;?>"><a href="#">Produkter</a></li>
+                      <li class="<?=($site == 'news')? 'active': '' ;?>"><a href="#">Nyheder</a></li>
+                      <li class="<?=($site == 'condition')? 'active': '' ;?>"><a href="#">Handelsbetingelser</a></li>
+                      <li class="<?=($site == 'about')? 'active': '' ;?>"><a href="#">Om os</a></li>
+                      <?php if(isset($_SESSION['username'])){
+                          ?>
+                          <li><a href='logout.php' class='logoutBtn'>Log ud</a></li>
+                          <?php
+                      }else {
+                          ?>
+                               <li><a href='#' class='loginBtn'>Log ind</a></li>
+                               <li class="<?=($site == 'register')? 'active': '' ;?>"><a href='register.php' class='loginBtn'>Opret bruger</a></li>
+                            <?php
+                           }
+                            ?>
             </ul>
         </nav>
         <div class="basket">

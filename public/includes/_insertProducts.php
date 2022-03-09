@@ -1,16 +1,20 @@
 <?php
 if(!isset($_GET['filter'])){
-$stmt = getProduct();
+    $stmt = getProduct();
 }else{
     $category = $_GET['filter'];
     $stmt = getFilteredProduct($category);
 }
 while ($row = $stmt->fetch()) {
+    
     $date = new DateTime($row['timestamp']);
+    // $username = getUsername($row['userid'])->fetch();
+    $date = $date->format('d-m-y');
+
     
 ?>
                 <article>
-                    <img src="<?=$row['imgSrc']?>" alt="<?=$row['imgAlt']?>">
+                    <img src="./uploads/<?=$row['imgSrc']?>" alt="<?=$row['imgAlt']?>">
                     <div class="info">
                         <h3><?=$row['heading']?></h3>
                         <div class="stars">
@@ -61,9 +65,9 @@ while ($row = $stmt->fetch()) {
                     </div>
                     <div class="description">
                         <div class="published">
-                            Oprettet af: <?=$_SESSION['username']?> den. <?php echo $date->format('d/m/y');?>
+                            Oprettet af: <?php echo $row['dbUsername']?> d. <?php echo $date;?>
                         </div>
-                        <p><?php echo stripslashes(htmlspecialchars($row['content']))?>
+                        <p><?php echo $row['content']?>
                             <a href="#">Læs mere...</a></p>
                         <!-- Mulighed for sletning herunder -->
                     </div>

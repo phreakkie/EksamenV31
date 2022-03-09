@@ -1,6 +1,7 @@
 <?php
 $meta = "Velkommen til FancyClothes.dk";
-$title= "Forside | FancyClothes.dk";
+$title = "Forside";
+$site = "index";
 require "./includes/_header.php";
 ?>
     

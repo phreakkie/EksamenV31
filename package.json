@@ -19,5 +19,10 @@
   "homepage": "https://github.com/phreakkie/EksamenV31#readme",
   "devDependencies": {
     "tailwindcss": "^3.0.23"
+  },
+  "dependencies": {
+    "express": "^4.17.3",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1"
   }
 }

@@ -1,4 +1,10 @@
 <?php
+if(!isset($_SESSION['username'])){  
+    if (isset($_POST['submit'])) {
+        $username = $_POST['formUsername'];
+        $password = $_POST['formPassword'];
+        login($username, $password);
+}}
 
 ?>
 
@@ -14,10 +20,3 @@
 </div>
 
 <?php
-
-if(!isset($_SESSION['username'])){  
-    if (isset($_POST['submit'])) {
-        $username = $_POST['formUsername'];
-        $password = $_POST['formPassword'];
-        login($username, $password);
-}}

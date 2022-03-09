@@ -1,6 +1,7 @@
 <?php
 $title ="Opret bruger";
 $meta ="Opret en bruger på siden FancyClothes.dk";
+$site = "register";
 require "./includes/_header.php";
 ?>
 <form action="<?php htmlentities($_SERVER['PHP_SELF']) ?>" method="POST" class="mx-auto my-20">

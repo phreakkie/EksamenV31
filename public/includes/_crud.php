@@ -1,6 +1,7 @@
 <?php
 require "./includes/_connect.php";
 
+
 function login($username, $password)
 {
     global $connection;
@@ -15,6 +16,7 @@ function login($username, $password)
         session_start();
         $_SESSION['username'] = $row['dbUsername'];
         $_SESSION['accesslevel'] = $row['accesslevel'];
+        $_SESSION['userid'] = $row['id'];
         header("location: index.php");
     } else {
         echo "<p class='text-red-500 mx-auto w-96 py-6 px-8 bg-red-200 border rounded-lg border-red-500 text-center'>Brugernavn eller Password er forkert</p>";
@@ -39,19 +41,19 @@ function getUser($username)
     return $stmt;
 }
 
-function insertProduct($content, $heading, $category, $stars, $src, $alt)
+function insertProduct($content, $heading, $category, $stars, $src, $alt, $userid)
 {
     global $connection;
-    $sql = "INSERT INTO products(content, heading, category, stars, imgSrc, imgAlt) VALUES(?,?,?,?,?,?)";
+    $sql = "INSERT INTO products(content, heading, category, stars, imgSrc, imgAlt, userid) VALUES(?,?,?,?,?,?,?)";
     $stmt = $connection->prepare($sql);
-    $stmt->execute([$content, $heading, $category, $stars, $src, $alt]);
+    $stmt->execute([$content, $heading, $category, $stars, $src, $alt, $userid]);
 }
 
 
 function getProduct()
 {
     global $connection;
-    $sql = "SELECT * FROM products";
+    $sql = "SELECT products.*, users.dbUsername FROM products JOIN users ON products.userid = users.id";
     $stmt = $connection->prepare($sql);
     $stmt->execute();
     return $stmt;
@@ -60,8 +62,18 @@ function getProduct()
 function getFilteredProduct($category)
 {
     global $connection;
-    $sql = "SELECT * FROM products WHERE category = ?";
+    $sql = "SELECT products.*, users.dbUsername FROM products JOIN users ON products.userid = users.id WHERE category = ?";
     $stmt = $connection->prepare($sql);
     $stmt->execute([$category]);
     return $stmt;
 }
+function getUsername($userid)
+{
+    global $connection;
+    $sql = "SELECT dbUsername FROM users WHERE id = ?";
+    $stmt = $connection->prepare($sql);
+    $stmt->execute([$userid]);
+    return $stmt;
+}
+
+
